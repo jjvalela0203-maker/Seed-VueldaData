@@ -1,0 +1,15 @@
+.git
+.gitignore
+.env
+website/node_modules
+website/build
+website/.docusaurus
+website/
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/

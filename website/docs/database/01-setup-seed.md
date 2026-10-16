@@ -7,7 +7,24 @@ sidebar_position: 1
 
 Este directorio contiene el script de siembra (Seed) para poblar las bases de datos operacionales del proyecto VuelaData. El script garantiza la reproducibilidad de los datos mediante una semilla fija, es idempotente (se puede ejecutar múltiples veces sin duplicar registros) y permite la inyección probabilística de defectos de calidad operacional.
 
-## Requisitos Previos
+## Despliegue Rápido con Docker Compose (Recomendado)
+
+Si dispones de Docker y Docker Compose, puedes levantar todo el entorno (Base de datos PostgreSQL, ejecución del Seed y Documentación) con un solo comando sin necesidad de instalar dependencias locales:
+
+```bash
+docker compose up -d --build
+```
+
+* **PostgreSQL:** Disponible en `localhost:5432` con el esquema operacional ya creado.
+* **Seed:** Ejecutado automáticamente una vez que la base de datos está saludable.
+* **Documentación Docusaurus:** Accesible en `http://localhost:3000`.
+
+Para ejecutar un Seed personalizado con Docker:
+```bash
+docker compose run --rm seed python seed.py --volumen full --tasa-defectos 0.15
+```
+
+## Requisitos Previos (Ejecución Local)
 
 1. **Python 3.9+** instalado en tu sistema.
 2. **Archivos CSV Base:** Asegúrate de tener los archivos `airlines.csv` y `airports.csv` en el mismo directorio que el script `seed.py`.
